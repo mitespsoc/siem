@@ -10,10 +10,20 @@ $ rpm -qa rsyslog
 $ apt list | grep -i "installed" | grep -i "syslog"
 $ apt list | grep -i "installed" | grep -i "rsyslog"
 ```
-### Unix-based Systems (Solaris)
+### Solaris
 ```
 $ pkginfo | grep -i "syslog"
 $ pkginfo | grep -i "rsyslog"
+```
+### AIX
+```
+$ lslpp -l | grep -i "syslog"
+$ lslpp -l | grep -i "rsyslog"
+```
+or
+```
+$ rpm -qa syslog
+$ rpm -qa rsyslog
 ```
 
 ---
@@ -33,7 +43,7 @@ $ sudo dnf install -y rsyslog
 $ sudo apt install -y rsyslog
 # apt install -y rsyslog
 ```
-### Unix-based Systems (Solaris)
+### Solaris
 ```
 # pkg install system/syslog
 # pkg install system/rsyslog
@@ -84,7 +94,7 @@ $ sudo service rsyslog start
 # service rsyslog start
 ```
 
-### Unix-based Systems (Solaris)
+### Solaris
 ```
 # svcadm enable system/system-log:syslog
 # svcadm refresh system/system-log:syslog
@@ -92,6 +102,12 @@ $ sudo service rsyslog start
 ```
 # svcadm enable system/system-log:rsyslog
 # svcadm refresh system/system-log:rsyslog
+```
+
+### AIX
+```
+# startsrc -s syslogd
+# startsrc -s rsyslogd
 ```
 
 ---
@@ -155,6 +171,7 @@ $ sudo service syslog restart
 $ sudo service rsyslog restart
 # service rsyslog restart
 ```
+
 ### Debian-based Systems (Ubuntu / Kubuntu / Linux Mint etc.)
 #### SystemD
 ```
@@ -174,12 +191,16 @@ $ sudo service syslog restart
 $ sudo service rsyslog restart
 # service rsyslog restart
 ```
-### Unix-based Systems (Solaris)
+
+### Solaris
 ```
 # svcadm restart system/system-log:syslog
-```
-```
 # svcadm restart system/system-log:rsyslog
 ```
 
+### AIX
+```
+# refresh -s syslogd
+# refresh -s rsyslogd
+```
 

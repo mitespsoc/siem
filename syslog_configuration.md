@@ -42,17 +42,48 @@ $ sudo apt install -y rsyslog
 
 
 ---
-## Enable and Start Rsyslog Service
+## Enable and Start Syslog/Rsyslog Service
 ### RHEL-based Systems (RHEL / CentOS / Fedora / Rocky Linux / Oracle Linux / Alma Linux etc.)
+#### SystemD
+```
+$ sudo systemctl enable --now syslog.service
+# systemctl enable --now syslog.service
+```
 ```
 $ sudo systemctl enable --now rsyslog.service
 # systemctl enable --now rsyslog.service
 ```
+#### SysVInit
+```
+$ sudo service syslog start
+# service syslog start
+```
+```
+$ sudo service rsyslog start
+# service rsyslog start
+```
+
+
 ### Debian-based Systems (Ubuntu / Kubuntu / Linux Mint etc.)
+#### SystemD
+```
+$ sudo systemctl enable --now syslog.service
+# systemctl enable --now syslog.service
+```
 ```
 $ sudo systemctl enable --now rsyslog.service
 # systemctl enable --now rsyslog.service
 ```
+#### SysVInit
+```
+$ sudo service syslog start
+# service syslog start
+```
+```
+$ sudo service rsyslog start
+# service rsyslog start
+```
+
 ### Unix-based Systems (Solaris)
 ```
 # svcadm enable system/system-log:syslog
@@ -103,7 +134,52 @@ $ sudo vi /etc/rsyslog.conf
 *.* action(type="omfwd" target="192.168.100.10" port="514" protocol="tcp")
 ```
 
-
-
+---
+## Restart Syslog/Rsyslog Service
+### RHEL-based Systems (RHEL / CentOS / Fedora / Rocky Linux / Oracle Linux / Alma Linux etc.)
+#### SystemD
+```
+$ sudo systemctl restart syslog.service
+# systemctl restart syslog.service
+```
+```
+$ sudo systemctl restart rsyslog.service
+# systemctl restart rsyslog.service
+```
+#### SysVInit
+```
+$ sudo service syslog restart
+# service syslog restart
+```
+```
+$ sudo service rsyslog restart
+# service rsyslog restart
+```
+### Debian-based Systems (Ubuntu / Kubuntu / Linux Mint etc.)
+#### SystemD
+```
+$ sudo systemctl restart syslog.service
+# systemctl restart syslog.service
+```
+```
+$ sudo systemctl restart rsyslog.service
+# systemctl restart rsyslog.service
+```
+#### SysVInit
+```
+$ sudo service syslog restart
+# service syslog restart
+```
+```
+$ sudo service rsyslog restart
+# service rsyslog restart
+```
+### Unix-based Systems (Solaris)
+```
+# svcadm restart system/system-log:syslog
+```
+```
+# svcadm restart system/system-log:rsyslog
+```
 
 

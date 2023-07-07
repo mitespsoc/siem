@@ -10,6 +10,12 @@ $ rpm -qa rsyslog
 $ apt list | grep -i "installed" | grep -i "syslog"
 $ apt list | grep -i "installed" | grep -i "rsyslog"
 ```
+### Unix-based Systems (Solaris)
+```
+$ pkginfo | grep -i "syslog"
+$ pkginfo | grep -i "rsyslog"
+```
+
 ---
 ## Install Rsyslog on the host
 ### RHEL-based Systems (RHEL / CentOS / Fedora / Rocky Linux / Oracle Linux / Alma Linux etc.)
@@ -27,6 +33,14 @@ $ sudo dnf install -y rsyslog
 $ sudo apt install -y rsyslog
 # apt install -y rsyslog
 ```
+### Unix-based Systems (Solaris)
+```
+# pkg install system/syslog
+# pkg install system/rsyslog
+```
+
+
+
 ---
 ## Enable and Start Rsyslog Service
 ### RHEL-based Systems (RHEL / CentOS / Fedora / Rocky Linux / Oracle Linux / Alma Linux etc.)
@@ -39,6 +53,16 @@ $ sudo systemctl enable --now rsyslog.service
 $ sudo systemctl enable --now rsyslog.service
 # systemctl enable --now rsyslog.service
 ```
+### Unix-based Systems (Solaris)
+```
+# svcadm enable system/system-log:syslog
+# svcadm refresh system/system-log:syslog
+```
+```
+# svcadm enable system/system-log:rsyslog
+# svcadm refresh system/system-log:rsyslog
+```
+
 ---
 ## Configure syslog forwarding on the host
 ### Syslog / Rsyslog v7.x and below

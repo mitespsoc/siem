@@ -71,12 +71,12 @@ $ sudo service rsyslog start
 ```
 ### 1.3.2. Solaris
 ```
-# svcadm enable system/system-log:syslog
-# svcadm refresh system/system-log:syslog
+# svcadm enable svc:/system/system-log:syslog
+# svcadm refresh svc:/system/system-log:syslog
 ```
 ```
-# svcadm enable system/system-log:rsyslog
-# svcadm refresh system/system-log:rsyslog
+# svcadm enable svc:/system/system-log:rsyslog
+# svcadm refresh svc:/system/system-log:rsyslog
 ```
 ### 1.3.3. AIX
 ```

@@ -15,6 +15,10 @@ $ apt list | grep -i "installed" | grep -i "rsyslog"
 $ pkginfo | grep -i "syslog"
 $ pkginfo | grep -i "rsyslog"
 ```
+> **Note** : Check the default system syslog configuration
+```
+# svcs system-log
+```
 ### 1.1.4. AIX
 ```
 $ lslpp -l | grep -i "syslog"

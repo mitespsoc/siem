@@ -78,6 +78,11 @@ $ sudo service rsyslog start
 # svcadm enable svc:/system/system-log:rsyslog
 # svcadm refresh svc:/system/system-log:rsyslog
 ```
+> **Note** : You may have to disable ```system-log:default``` before enabling rsyslog
+```
+# svcadm disable svc:/system/system-log:default
+```
+
 ### 1.3.3. AIX
 ```
 # startsrc -s syslogd

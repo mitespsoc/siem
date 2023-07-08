@@ -45,7 +45,6 @@ $ sudo apt install -y rsyslog
 ```
 ### 1.2.3. Solaris
 ```
-# pkg install system/syslog
 # pkg install system/rsyslog
 ```
 

@@ -18,6 +18,7 @@ $ pkginfo | grep -i "rsyslog"
 > **Note** : Check the default system syslog configuration
 ```
 # svcs system-log
+# svcs -a | grep -i "system-log"
 ```
 ### 1.1.4. AIX
 ```

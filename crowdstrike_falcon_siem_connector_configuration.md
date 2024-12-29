@@ -1,13 +1,19 @@
 # CrowdStrike Falcon SIEM Connector - Configuration Guide
-## 1. Create an API Client for the CrowdStrike Falcon Streaming API
 
-1.1. Log in to the [CrowdStrike Falcon](https://falcon.crowdstrike.com/) Web Console, and go to the _**Support > API Clients and Keys**_
+## Prerequisite
+> [!IMPORTANT]
+> Before using this method, you'll have to contact [CrowdStrike Support](https://supportportal.crowdstrike.com/) to enable Streaming APIs on your CrowdStrike account.
+
+<br>
+
+## 1. Create an API Client for the CrowdStrike Falcon Streaming API
+1.1. Navigate to _**Support > API Clients and Keys**_ on the [CrowdStrike Falcon](https://falcon.crowdstrike.com/) Web Console
 
 1.2. Click _**'Create API client'**_ under _**OAuth2 API Clients**_
 
 1.3. Enter the _**CLIENT NAME**_ and insert a _**DESCRIPTION**_ if required
 
-1.4. Set the _**API SCOPES**_ as follows and Click _**'CREATE'**_
+1.4. Set the _**API SCOPES**_ as follows and Click _**'Create'**_
 
 | Scope         | Read                    |
 | :------------ | :---------------------: |
@@ -19,7 +25,7 @@
 <br>
 
 ## 2. Download the CrowdStrike Falcon SIEM Connector Installation Package
-2.1. Log in to the [CrowdStrike Falcon](https://falcon.crowdstrike.com/) Web Console, and go to the _**Support > Tool Downloads**_
+2.1. Navigate to _**Support > Tool Downloads**_ on the [CrowdStrike Falcon](https://falcon.crowdstrike.com/) Web Console
 
 2.2. Select the appropriate **'Falcon SIEM Connector'** installation package and Click on the :arrow_down: button under _**Actions**_
 
@@ -82,6 +88,22 @@ client_id = <client_id>
 client_secret =  <secret>
 ```
 
+> [!NOTE]
+> You may also need to edit the _**'api_url'**_ and _**'request_token_url'**_, depending on where your CrowdStrike instance is located.
+
+| Instance | api_url / request_token_url      |
+| :------- | :------------------------------- |
+| US-1     | `api.crowdstrike.com`            |
+| US-2     | `api.us-2.crowdstrike.com`       |
+| US-GOV-1 | `api.lagger.gcw.crowdstrike.com` |
+| EU-1     | `api.eu-1.crowdstrike.com`       |
+
+```bash
+[Settings]
+api_url = https://<api_url>/sensors/entities/datafeed/v2
+request_token_url = https://<request_token_url>/oauth2/token
+```
+
 4.3. Confirm the output format is set to _**'syslog'**_
 ```bash
 [Settings]
@@ -114,4 +136,3 @@ protocol = tcp
 ```bash
 systemctl enable --now cs.falconhoseclientd.service
 ```
-

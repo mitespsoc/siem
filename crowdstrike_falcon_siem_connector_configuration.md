@@ -142,13 +142,34 @@ protocol = tcp
         CEF: /opt/crowdstrike/etc/cs.falconhoseclient.cef.cfg
 > Copy that sample config file.
 
-    Rename your copied file to use a unique label you choose.
-
+        Rename your copied file to use a unique label you choose.
         The label is used to help you recognize which CID it represents. The log files for this CID also use the same label.
-
         The file extension must remain .cfg, such as example_customer.cfg
 > Move your copied file to this directory: **/opt/crowdstrike/config/**
 > Repeat these steps for each CID that you want to add to the SIEM connector. Each CID's config file name must be unique.
+>For each of your .cfg files in /opt/crowdstrike/config/:
+
+    Open the file in a text editor.
+    Find the [Settings] section.
+    Edit these lines for your environment:
+
+        app_id: Uniquely identifies your API connection for troubleshooting. Max: 32 characters. The following characters are valid: a-z, A-Z, 0-9,.,-,_
+        Note: the app_id must be unique to your environment.
+        client_id: Your API client's ID
+        client_secret: Your API client's secret
+    Save your changes
+
+> Modify the initialization script to use multiple CIDs
+
+To use multiple CIDs, you must modify the initialization script. The default initialization script uses a single CID.
+
+    Open the configuration file in a text editor: /etc/systemd/system/cs.falconhoseclientd.service
+    Locate the line beginning with -config=
+
+    Change the .cfg file name to use cs.falconhoseclient_daemon.cfg:
+
+        Before: -config=/opt/crowdstrike/etc/cs.falconhoseclient.cfg
+        After: -config=/opt/crowdstrike/etc/cs.falconhoseclient_daemon.cfg
 
 
 4.5. Start the service

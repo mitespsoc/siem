@@ -133,6 +133,24 @@ protocol = tcp
 | send_to_syslog_server | `true` \| `false` |
 | protocol              | `tcp` \| `udp`    |
 
+> [!NOTE]
+> Installing the SIEM Connector for multiple CIDs
+> For each CID you want to manage:
+> Locate the sample config file for the output type you want.
+
+        Syslog: /opt/crowdstrike/etc/cs.falconhoseclient.cfg
+        CEF: /opt/crowdstrike/etc/cs.falconhoseclient.cef.cfg
+> Copy that sample config file.
+
+    Rename your copied file to use a unique label you choose.
+
+        The label is used to help you recognize which CID it represents. The log files for this CID also use the same label.
+
+        The file extension must remain .cfg, such as example_customer.cfg
+> Move your copied file to this directory: **/opt/crowdstrike/config/**
+> Repeat these steps for each CID that you want to add to the SIEM connector. Each CID's config file name must be unique.
+
+
 4.5. Start the service
 ```bash
 systemctl enable --now cs.falconhoseclientd.service
